@@ -8,6 +8,9 @@
 # Test binary, built with `go test -c`
 *.test
 
+# Built server binary
+server
+
 # Code coverage profiles and other test artifacts
 *.out
 coverage.*
