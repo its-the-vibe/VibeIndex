@@ -1,0 +1,20 @@
+{
+  "organizationName": "Its The Vibe",
+  "projects": [
+    {
+      "name": "VibeIndex",
+      "description": "Index of sites and repositories",
+      "url": "https://github.com/its-the-vibe/VibeIndex"
+    },
+    {
+      "name": "Example Project 1",
+      "description": "First example project",
+      "url": "https://example.com/project1"
+    },
+    {
+      "name": "Example Project 2",
+      "description": "Second example project",
+      "url": "https://example.com/project2"
+    }
+  ]
+}
