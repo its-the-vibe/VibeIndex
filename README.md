@@ -20,16 +20,28 @@ VibeIndex is a Single Page Application (SPA) that provides a central index for p
 
 ## Getting Started
 
+### Initial Setup
+
+Before running the application, you need to create your configuration file:
+
+1. Copy the example configuration:
+```bash
+cp static/config.json.example static/config.json
+```
+
+2. Edit `static/config.json` to customize your organization and projects
+
 ### Running with Docker (Recommended)
 
 1. Clone the repository
-2. Run with Docker Compose:
+2. Create your config file (see Initial Setup above)
+3. Run with Docker Compose:
 
 ```bash
 docker compose up -d
 ```
 
-3. Open your browser to `http://localhost:8080`
+4. Open your browser to `http://localhost:8080`
 
 To stop the server:
 
@@ -40,14 +52,15 @@ docker compose down
 ### Running with Go
 
 1. Clone the repository
-2. Build and run the Go server:
+2. Create your config file (see Initial Setup above)
+3. Build and run the Go server:
 
 ```bash
 go build -o server .
 ./server
 ```
 
-3. Open your browser to `http://localhost:8080`
+4. Open your browser to `http://localhost:8080`
 
 The server listens on port 8080 by default. You can customize this with the `PORT` environment variable:
 
@@ -71,7 +84,7 @@ npx http-server -p 8080
 
 ### Configuration
 
-Edit `static/config.json` to customize the projects displayed:
+The `static/config.json` file is not included in source control. Use `static/config.json.example` as a template:
 
 ```json
 {
@@ -86,6 +99,8 @@ Edit `static/config.json` to customize the projects displayed:
 }
 ```
 
+**Note:** The `config.json` file should be created from the example template and customized for your environment. It is excluded from version control to allow different configurations per deployment.
+
 ## Project Structure
 
 - `main.go` - Go web server for serving static files
@@ -93,7 +108,7 @@ Edit `static/config.json` to customize the projects displayed:
   - `index.html` - Main HTML structure
   - `app.js` - Application logic and SPA functionality
   - `styles.css` - Styling and responsive design
-  - `config.json` - Project configuration
+  - `config.json.example` - Example project configuration (copy to `config.json` and customize)
 - `Dockerfile` - Multi-stage Docker build configuration
 - `docker-compose.yml` - Docker Compose configuration
 

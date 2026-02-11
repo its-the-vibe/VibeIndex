@@ -13,6 +13,9 @@ RUN go mod download
 COPY main.go ./
 COPY static ./static
 
+# Create config.json from example if it doesn't exist
+RUN if [ ! -f static/config.json ]; then cp static/config.json.example static/config.json; fi
+
 # Build the application
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o server .
 
