@@ -8,4 +8,4 @@ services:
     read_only: true
     restart: on-failure:10
     volumes:
-      - static:/app/static
+      - ./static:/app/static
