@@ -1,15 +1,10 @@
 package main
 
 import (
-	"embed"
-	"io/fs"
 	"log"
 	"net/http"
 	"os"
 )
-
-//go:embed static
-var staticFiles embed.FS
 
 func main() {
 	port := os.Getenv("PORT")
@@ -17,12 +12,7 @@ func main() {
 		port = "8080"
 	}
 
-	staticFS, err := fs.Sub(staticFiles, "static")
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	fileServer := http.FileServer(http.FS(staticFS))
+	fileServer := http.FileServer(http.Dir("static"))
 	http.Handle("/", fileServer)
 
 	log.Printf("Starting server on port %s...", port)
