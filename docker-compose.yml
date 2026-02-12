@@ -7,3 +7,5 @@ services:
       - PORT=8080
     read_only: true
     restart: on-failure:10
+    volumes:
+      - static:/app/static
