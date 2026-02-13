@@ -14,9 +14,28 @@
         </header>
         
         <main>
-            <div id="projects-container" class="projects-grid">
-                <!-- Project buttons will be dynamically inserted here -->
-            </div>
+            <section class="panel">
+                <h2 class="panel-title">Deployed Projects</h2>
+                <div id="projects-container" class="projects-grid">
+                    <!-- Project buttons will be dynamically inserted here -->
+                </div>
+            </section>
+            
+            <section class="panel" id="repositories-panel" style="display: none;">
+                <h2 class="panel-title">GitHub Repositories</h2>
+                <div class="search-container">
+                    <input 
+                        type="text" 
+                        id="repo-search" 
+                        class="search-input" 
+                        placeholder="Search repositories..."
+                        aria-label="Search repositories"
+                    />
+                </div>
+                <div id="repositories-container" class="repositories-list">
+                    <!-- Repository links will be dynamically inserted here -->
+                </div>
+            </section>
             
             <div id="loading" class="loading">Loading projects...</div>
             <div id="error" class="error" style="display: none;"></div>

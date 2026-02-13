@@ -53,6 +53,83 @@ main {
     flex-direction: column;
 }
 
+.panel {
+    margin-bottom: 40px;
+}
+
+.panel-title {
+    color: #333;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #eee;
+}
+
+.search-container {
+    margin-bottom: 20px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 1rem;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s ease;
+    font-family: inherit;
+}
+
+.search-input:focus {
+    border-color: #667eea;
+}
+
+.repositories-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.repo-item {
+    display: flex;
+    align-items: center;
+    padding: 16px 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    color: inherit;
+}
+
+.repo-item:hover {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-color: transparent;
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.repo-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 12px;
+    opacity: 0.7;
+}
+
+.repo-item:hover .repo-icon {
+    opacity: 1;
+}
+
+.repo-name {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.repo-item.hidden {
+    display: none;
+}
+
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
