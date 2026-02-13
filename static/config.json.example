@@ -16,5 +16,19 @@
       "description": "Second example project",
       "url": "https://example.com/project2"
     }
+  ],
+  "githubRepositories": [
+    {
+      "name": "VibeIndex",
+      "url": "https://github.com/its-the-vibe/VibeIndex"
+    },
+    {
+      "name": "Example Repository 1",
+      "url": "https://github.com/its-the-vibe/example-repo-1"
+    },
+    {
+      "name": "Example Repository 2",
+      "url": "https://github.com/its-the-vibe/example-repo-2"
+    }
   ]
 }

@@ -11,6 +11,7 @@ VibeIndex is a Single Page Application (SPA) that provides a central index for p
 - 🎯 Simple configuration via JSON file
 - 🎨 Modern, responsive UI with gradient design
 - 🔗 One-click navigation to project sites (opens in new tab)
+- 🔍 GitHub repositories panel with fuzzy search filter
 - 📱 Mobile-friendly responsive layout
 - ♿ Accessible with ARIA labels
 - ⚡ Fast loading with vanilla JavaScript
@@ -95,9 +96,20 @@ The `static/config.json` file is not included in source control. Use `static/con
       "description": "Brief project description",
       "url": "https://your-project-url.com"
     }
+  ],
+  "githubRepositories": [
+    {
+      "name": "Repository Name",
+      "url": "https://github.com/your-org/your-repo"
+    }
   ]
 }
 ```
+
+**Configuration Fields:**
+- `organizationName` (required): The name of your organization displayed at the top of the page
+- `projects` (optional): Array of deployed projects with name, description, and URL
+- `githubRepositories` (optional): Array of GitHub repositories with name and URL. When provided, displays a searchable panel with direct links to repositories.
 
 **Note:** The `config.json` file should be created from the example template and customized for your environment. It is excluded from version control to allow different configurations per deployment.
 
@@ -123,7 +135,6 @@ The Docker image is built using a multi-stage build process:
 ## Future Enhancements
 
 Planned features for future versions:
-- List GitHub repositories with search/filter functionality
 - Display organization-wide GitHub issues
 - Show organization-wide GitHub pull requests
 - GitHub API integration for real-time data
