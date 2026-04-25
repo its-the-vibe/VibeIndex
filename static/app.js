@@ -142,7 +142,9 @@ class VibeIndexApp {
             badge.className = 'repo-ci-badge';
             badge.alt = 'CI Status';
             badge.style.display = 'none';
+            // Show the badge only when the image loads successfully (endpoint exists).
             badge.addEventListener('load', () => { badge.style.display = ''; });
+            // Ensure the badge remains hidden when the endpoint returns a 404 or the request fails.
             badge.addEventListener('error', () => { badge.style.display = 'none'; });
             badge.src = badgeUrl;
             item.appendChild(badge);
@@ -158,6 +160,7 @@ class VibeIndexApp {
             const pathParts = url.pathname.split('/').filter(Boolean);
             if (pathParts.length < 2) return null;
             const [owner, repo] = pathParts;
+            // Badge URL targets the 'ci.yaml' workflow — the standard CI workflow name for this organisation.
             return `https://github.com/${owner}/${repo}/actions/workflows/ci.yaml/badge.svg`;
         } catch (e) {
             return null;
