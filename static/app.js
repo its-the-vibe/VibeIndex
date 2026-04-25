@@ -135,7 +135,33 @@ class VibeIndexApp {
         item.appendChild(icon);
         item.appendChild(name);
         
+        // Add CI status badge if a badge URL can be derived from the repo URL
+        const badgeUrl = this.getCIBadgeUrl(repo.url);
+        if (badgeUrl) {
+            const badge = document.createElement('img');
+            badge.className = 'repo-ci-badge';
+            badge.alt = 'CI Status';
+            badge.style.display = 'none';
+            badge.addEventListener('load', () => { badge.style.display = ''; });
+            badge.addEventListener('error', () => { badge.style.display = 'none'; });
+            badge.src = badgeUrl;
+            item.appendChild(badge);
+        }
+        
         return item;
+    }
+    
+    getCIBadgeUrl(repoUrl) {
+        try {
+            const url = new URL(repoUrl);
+            if (url.hostname !== 'github.com') return null;
+            const pathParts = url.pathname.split('/').filter(Boolean);
+            if (pathParts.length < 2) return null;
+            const [owner, repo] = pathParts;
+            return `https://github.com/${owner}/${repo}/actions/workflows/ci.yaml/badge.svg`;
+        } catch (e) {
+            return null;
+        }
     }
     
     setupSearch() {

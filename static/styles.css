@@ -130,6 +130,12 @@ main {
     display: none;
 }
 
+.repo-ci-badge {
+    height: 20px;
+    margin-left: auto;
+    flex-shrink: 0;
+}
+
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
