@@ -135,6 +135,72 @@ describe('VibeIndexApp', () => {
 
             expect(item.dataset.repoName).toBe('myrepo');
         });
+
+        it('includes a CI badge image for GitHub repos, initially hidden', () => {
+            const repo = { name: 'my-repo', url: 'https://github.com/org/my-repo' };
+            const item = app.createRepositoryItem(repo);
+
+            const badge = item.querySelector('.repo-ci-badge');
+            expect(badge).not.toBeNull();
+            expect(badge.tagName).toBe('IMG');
+            expect(badge.src).toBe('https://github.com/org/my-repo/actions/workflows/ci.yaml/badge.svg');
+            expect(badge.style.display).toBe('none');
+        });
+
+        it('shows the CI badge when the image loads successfully', () => {
+            const repo = { name: 'my-repo', url: 'https://github.com/org/my-repo' };
+            const item = app.createRepositoryItem(repo);
+
+            const badge = item.querySelector('.repo-ci-badge');
+            badge.dispatchEvent(new Event('load'));
+
+            expect(badge.style.display).toBe('');
+        });
+
+        it('keeps the CI badge hidden when the image fails to load', () => {
+            const repo = { name: 'my-repo', url: 'https://github.com/org/my-repo' };
+            const item = app.createRepositoryItem(repo);
+
+            const badge = item.querySelector('.repo-ci-badge');
+            badge.dispatchEvent(new Event('error'));
+
+            expect(badge.style.display).toBe('none');
+        });
+
+        it('does not include a CI badge for non-GitHub repos', () => {
+            const repo = { name: 'my-repo', url: 'https://gitlab.com/org/my-repo' };
+            const item = app.createRepositoryItem(repo);
+
+            const badge = item.querySelector('.repo-ci-badge');
+            expect(badge).toBeNull();
+        });
+    });
+
+    describe('getCIBadgeUrl', () => {
+        let app;
+
+        beforeEach(() => {
+            global.fetch.mockResolvedValue({ ok: false, json: jest.fn() });
+            app = Object.create(VibeIndexApp.prototype);
+        });
+
+        it('returns the correct badge URL for a GitHub repo URL', () => {
+            expect(app.getCIBadgeUrl('https://github.com/org/my-repo')).toBe(
+                'https://github.com/org/my-repo/actions/workflows/ci.yaml/badge.svg'
+            );
+        });
+
+        it('returns null for a non-GitHub URL', () => {
+            expect(app.getCIBadgeUrl('https://gitlab.com/org/my-repo')).toBeNull();
+        });
+
+        it('returns null when the URL has fewer than two path parts', () => {
+            expect(app.getCIBadgeUrl('https://github.com/org')).toBeNull();
+        });
+
+        it('returns null for an invalid URL string', () => {
+            expect(app.getCIBadgeUrl('not-a-url')).toBeNull();
+        });
     });
 
     describe('filterRepositories', () => {
