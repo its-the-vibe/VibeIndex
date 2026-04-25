@@ -1,5 +1,7 @@
 # VibeIndex
 
+[![CI](https://github.com/its-the-vibe/VibeIndex/actions/workflows/ci.yaml/badge.svg)](https://github.com/its-the-vibe/VibeIndex/actions/workflows/ci.yaml)
+
 Index of the sites and repositories contained in the Github organisation
 
 ## Overview
@@ -112,6 +114,46 @@ The `static/config.json` file is not included in source control. Use `static/con
 - `githubRepositories` (optional): Array of GitHub repositories with name and URL. When provided, displays a searchable panel with direct links to repositories.
 
 **Note:** The `config.json` file should be created from the example template and customized for your environment. It is excluded from version control to allow different configurations per deployment.
+
+## Development
+
+### Using the Makefile
+
+A `Makefile` is provided to streamline common development tasks:
+
+| Target | Description |
+|--------|-------------|
+| `make build` | Compile the Go server binary |
+| `make test` | Run all tests (Go and JavaScript) |
+| `make lint` | Run all linters (Go `vet` and ESLint) |
+| `make docker` | Build the Docker image |
+| `make clean` | Remove build artefacts |
+
+```bash
+# Build the Go server
+make build
+
+# Run all tests
+make test
+
+# Lint the code
+make lint
+
+# Build the Docker image
+make docker
+```
+
+### JavaScript Tests
+
+JavaScript unit tests for `static/app.js` use [Jest](https://jestjs.io/). To run them:
+
+```bash
+# Install dependencies (first time only)
+npm install
+
+# Run tests
+npm test
+```
 
 ## Project Structure
 

@@ -1,0 +1,20 @@
+{
+  "name": "vibeindex",
+  "version": "1.0.0",
+  "description": "GitHub Organization Index SPA",
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint static/app.js"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.1",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "testMatch": [
+      "**/static/**/*.test.js"
+    ]
+  }
+}

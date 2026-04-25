@@ -195,6 +195,13 @@ class VibeIndexApp {
 }
 
 // Initialize the app when DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
-    new VibeIndexApp();
-});
+if (typeof document !== 'undefined') {
+    document.addEventListener('DOMContentLoaded', () => {
+        new VibeIndexApp();
+    });
+}
+
+// Export for testing (Node.js/Jest environment)
+if (typeof module !== 'undefined') {
+    module.exports = { VibeIndexApp };
+}
