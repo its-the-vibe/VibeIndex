@@ -1,6 +1,8 @@
 services:
   web:
     build: .
+    image: ghcr.io/its-the-vibe/vibeindex:latest
+    pull_policy: always
     ports:
       - "${PORT}:8080"
     environment:
