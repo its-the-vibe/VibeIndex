@@ -1,7 +1,5 @@
 # VibeIndex
 
-[![CI](https://github.com/its-the-vibe/VibeIndex/actions/workflows/ci.yaml/badge.svg)](https://github.com/its-the-vibe/VibeIndex/actions/workflows/ci.yaml)
-
 Index of the sites and repositories contained in the Github organisation
 
 ## Overview
